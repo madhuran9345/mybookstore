@@ -1,4 +1,12 @@
-FROM openjdk:17
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+# Copy WAR and webapp-runner
+COPY target/onlinebookstore.war /app/onlinebookstore.war
+COPY target/dependency/webapp-runner.jar /app/webapp-runner.jar
+
+EXPOSE 8080
+
+# Run the app with webapp-runner
+CMD ["java", "-jar", "webapp-runner.jar", "onlinebookstore.war"]
