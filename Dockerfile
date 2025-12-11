@@ -1,4 +1,4 @@
-# Use a valid OpenJDK 17 image
+## Use a valid OpenJDK 17 image
 FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
